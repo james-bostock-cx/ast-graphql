@@ -18,7 +18,7 @@ $ poetry shell
 To start the server:
 
 ```
-$ uvicorn ast-graphql.py
+$ uvicorn ast-graphql:app
 ```
 
 # Sample Queries
