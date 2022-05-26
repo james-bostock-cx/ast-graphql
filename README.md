@@ -72,6 +72,11 @@ To start the server:
 
 ```
 $ uvicorn ast-graphql:app
+INFO:     Started server process [14100]
+INFO:     Waiting for application startup.
+INFO:     ASGI 'lifespan' protocol appears unsupported.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 ```
 
 # Sample Queries
@@ -102,4 +107,17 @@ Get the id, name and scan ids of a specific project:
     }
   }
 }
+```
+
+# Playground
+
+Once running, a _playground_ is exposed on port 8000 of the local host:
+
+![Araidne GraphQL playground](playground.png)
+
+The *Copy Curl* button (top left corner) copies the corresponding
+**curl** command to the clipboard.
+
+```
+curl 'http://127.0.0.1:8000/' -H 'Accept-Encoding: gzip, deflate, br' -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Connection: keep-alive' -H 'DNT: 1' -H 'Origin: http://127.0.0.1:8000' --data-binary '{"query":"# Write your query or mutation here\n{\n  project(id: \"14fe193f-2d66-4399-9730-071c03d36948\") {\n    id\n    name\n    scans {\n      id\n    }\n  }\n}"}' --compressed
 ```
